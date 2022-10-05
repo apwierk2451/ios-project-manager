@@ -18,6 +18,8 @@ protocol ViewModelType {
     func resetProjectList(projectList: BehaviorSubject<[Project]>)
 }
 
+// MARK: - extension
+
 extension ViewModelType {
     
     func resetProjectList(projectList: BehaviorSubject<[Project]>) {

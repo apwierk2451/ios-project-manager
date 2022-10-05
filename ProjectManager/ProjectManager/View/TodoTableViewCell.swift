@@ -52,6 +52,8 @@ final class TodoTableViewCell: UITableViewCell {
         return stackView
     }()
     
+    // MARK: - initializers
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupConstraints()

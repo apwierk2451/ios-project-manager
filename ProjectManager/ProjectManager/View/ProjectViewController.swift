@@ -12,7 +12,7 @@ final class ProjectViewController: UIViewController {
     
     // MARK: - properties
     
-    let viewModel = ProjectViewModel()
+    private let viewModel = ProjectViewModel()
     
     let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel,
                                        target: nil,
@@ -79,18 +79,6 @@ final class ProjectViewController: UIViewController {
         super.viewDidLoad()
         setupStackView()
         setupNavigationItem()
-        
-    }
-    
-    private func bindViewModel() {
-        guard let index = index else { return }
-        let input = ProjectViewModel.Input(showTouchData: index)
-        let output = viewModel.transform(input: input)
-        output.projectList
-            .subscribe(onNext: { [weak self] in
-                self?.setupData(project: $0)
-            })
-            .disposed(by: disposeBag)
     }
 }
 
@@ -140,6 +128,17 @@ extension ProjectViewController {
         self.projectTitle.text = project.title
         self.datePicker.date = project.date
         self.projectDescription.text = project.description
+    }
+    
+    private func bindViewModel() {
+        guard let index = index else { return }
+        let input = ProjectViewModel.Input(showTouchData: index)
+        let output = viewModel.transform(input: input)
+        output.projectList
+            .subscribe(onNext: { [weak self] in
+                self?.setupData(project: $0)
+            })
+            .disposed(by: disposeBag)
     }
 }
 

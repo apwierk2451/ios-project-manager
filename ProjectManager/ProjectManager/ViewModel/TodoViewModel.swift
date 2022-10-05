@@ -19,6 +19,7 @@ final class TodoViewModel: ViewModelType {
     struct Output {
         var projectList: Observable<[Project]>
     }
+    
     // MARK: - properties
     
     let provider = TodoProvider.shared
