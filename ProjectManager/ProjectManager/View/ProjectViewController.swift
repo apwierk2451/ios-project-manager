@@ -83,9 +83,10 @@ final class ProjectViewController: UIViewController {
     }
     
     private func bindViewModel() {
-        let input = ProjectViewModel.Input(showTouchData: index!)
+        guard let index = index else { return }
+        let input = ProjectViewModel.Input(showTouchData: index)
         let output = viewModel.transform(input: input)
-        output?.projectList
+        output.projectList
             .subscribe(onNext: { [weak self] in
                 self?.setupData(project: $0)
             })

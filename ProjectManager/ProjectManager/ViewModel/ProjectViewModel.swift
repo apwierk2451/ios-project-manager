@@ -21,7 +21,7 @@ final class ProjectViewModel: ViewModelType {
     let provider = TodoProvider.shared
     let disposeBag = DisposeBag()
     
-    func transform(input: Input) -> Output? {
+    func transform(input: Input) -> Output {
         let projectList = BehaviorSubject<[Project]>(value: [])
         resetProjectList(projectList: projectList)
         
